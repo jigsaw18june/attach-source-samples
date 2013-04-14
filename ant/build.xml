@@ -1,0 +1,22 @@
+<project default="build" name="proj">
+<target name="init">
+	<mkdir dir="bin" />
+	<mkdir dir="jar" />
+</target>
+<target name="clean">
+	<delete dir="bin" />
+	<delete dir="jar" />
+</target>
+<target name="build">
+	<javac debug="true" debuglevel="source,lines,vars" destdir="bin" includeantruntime="false" source="1.6" target="1.6">
+		<src path="src" />
+	</javac>
+	<jar destfile="jar/proj.jar">
+		<fileset dir="src" /> <!-- Attaching source -->
+		<fileset dir="bin" />
+		<manifest>
+			<attribute name="Main-Class" value="com.mycompany.proj.Main" />
+		</manifest>
+	</jar>
+</target>
+</project>
